@@ -24,6 +24,8 @@ public class Driver extends BaseModel{
     @Column(nullable = false, unique = true)
     private String licenseNumber;
 
+    private String phoneNumber;
+
     // 1 : n -> Driver : Bookings
     @OneToMany(mappedBy = "driver", fetch = FetchType.LAZY)
     @Fetch(FetchMode.SUBSELECT)

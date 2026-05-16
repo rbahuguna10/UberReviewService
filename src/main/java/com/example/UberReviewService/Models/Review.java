@@ -15,7 +15,7 @@ import java.util.Date;
 @AllArgsConstructor
 //@EntityListeners(AuditingEntityListener.class) // -> Now shifted to BaseModel class
 @Entity
-@Table(name = "BookingReview") // Here we can give a custom name to our table, although we also have 'name' property for
+@Table(name = "booking_review") // Here we can give a custom name to our table, although we also have 'name' property for
                         // @Entity but that will affect the entire java logic whereas @Table will only affect the database
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Review extends BaseModel{
@@ -23,6 +23,10 @@ public class Review extends BaseModel{
     private String content;
 
     private Double rating;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "booking_id", nullable = false)
+    private Booking booking;
 
     @Override
     public String toString() {

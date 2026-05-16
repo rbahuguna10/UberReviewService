@@ -34,7 +34,8 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 	// flyway for Database migration
-	implementation 'org.flywaydb:flyway-mysql:8.4.4'
+	implementation 'org.flywaydb:flyway-core:10.20.1'
+	implementation 'org.flywaydb:flyway-mysql:10.20.1'
 }
 
 tasks.named('test') {
