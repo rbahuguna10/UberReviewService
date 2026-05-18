@@ -25,7 +25,7 @@ public class Review extends BaseModel{
     private Double rating;
 
     @OneToOne(cascade = {CascadeType.ALL})
-    private Booking booking;
+    private Booking booking; // we have defined a 1:1 relationship between "Review" & "Booking"
 
     @Override
     public String toString() {

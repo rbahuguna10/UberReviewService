@@ -13,8 +13,6 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Booking extends BaseModel {
-    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, fetch = FetchType.LAZY)
-    private Review review; // we have defined a 1:many relationship between "Booking" & "Review"
 
     @Enumerated(value = EnumType.STRING)
     private BookingStatus bookingStatus;
