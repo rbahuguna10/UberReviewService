@@ -3,7 +3,7 @@ CREATE TABLE booking
     id             BIGINT AUTO_INCREMENT NOT NULL,
     created_at     datetime              NOT NULL,
     updated_at     datetime              NOT NULL,
-    booking_status VARCHAR(255)          NULL,
+    booking_status ENUM('SCHEDULED','CANCELLED','CAB_ARRIVED','ASSIGNING_DRIVER','IN_RIDE','COMPLETED')          NULL,
     start_time     datetime              NULL,
     end_time       datetime              NULL,
     total_distance BIGINT                NULL,
