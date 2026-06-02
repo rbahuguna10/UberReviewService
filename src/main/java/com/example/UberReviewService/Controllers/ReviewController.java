@@ -1,8 +1,8 @@
 package com.example.UberReviewService.Controllers;
 
-//import com.example.UberReviewService.Adapters.CreateReviewDtoToReviewAdapter;
-//import com.example.UberReviewService.DTOs.CreateReviewDto;
-//import com.example.UberReviewService.DTOs.ReviewDto;
+import com.example.UberReviewService.Adapters.CreateReviewDTOtoReviewAdapter;
+import com.example.UberReviewService.DTOs.CreateReviewDTO;
+import com.example.UberReviewService.DTOs.ReviewDTO;
 import com.example.UberReviewService.Models.Review;
 import com.example.UberReviewService.Services.ReviewService;
 import org.springframework.http.HttpStatus;
@@ -16,21 +16,20 @@ import java.util.*;
 @RequestMapping("/api/v1/reviews")
 public class ReviewController {
     private ReviewService reviewService;
-    private CreateReviewDtoToReviewAdapter createReviewDtoToReviewAdapter;
-    public ReviewController(ReviewService reviewService, CreateReviewDtoToReviewAdapter createReviewDtoToReviewAdapter){
-
+    private CreateReviewDTOtoReviewAdapter createReviewDTOtoReviewAdapter;
+    public ReviewController(ReviewService reviewService, CreateReviewDTOtoReviewAdapter createReviewDTOtoReviewAdapter){
         this.reviewService = reviewService;
-        this.createReviewDtoToReviewAdapter = createReviewDtoToReviewAdapter;
+        this.createReviewDTOtoReviewAdapter = createReviewDTOtoReviewAdapter;
     }
 
     @PostMapping
-    public ResponseEntity<?> publishReview(@Validated @RequestBody CreateReviewDto request) {
-        Review incomingReview  = this.createReviewDtoToReviewAdapter.convertDto(request);
+    public ResponseEntity<?> publishReview(@Validated @RequestBody CreateReviewDTO request) {
+        Review incomingReview  = this.createReviewDTOtoReviewAdapter.convertDto(request);
         if(incomingReview == null) {
             return new ResponseEntity<>("Invalid arguments", HttpStatus.BAD_REQUEST);
         }
         Review review = this.reviewService.publishReview(incomingReview);
-        ReviewDto response = ReviewDto.builder()
+        ReviewDTO response = ReviewDTO.builder()
                 .id(review.getId())
                 .content(review.getContent())
                 .booking(review.getBooking().getId())
