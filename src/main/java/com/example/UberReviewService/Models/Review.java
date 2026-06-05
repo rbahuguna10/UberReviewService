@@ -29,7 +29,7 @@ public class Review extends BaseModel{
 
     @Override
     public String toString() {
-        return "Review: " + this.content + " " + this.rating + " " + this.createdAt;
+        return "Review: " + this.content + " " + this.rating + " " + " booking: " + this.booking.getId() + " " + this.createdAt;
     }
 
 }
